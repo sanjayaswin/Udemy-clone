@@ -1,183 +1,461 @@
-body {
-    font-family: "Gabarito", sans-serif;
-}
-
 * {
-    padding: 0;
-    margin: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar {
+/* Apply Gabarito font globally */
+body {
+  font-family: "Gabarito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* You can change to 500, 700, etc. */
+  font-style: normal;
+}
+
+.navigator{
+    padding: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: solid black 1px;
+    border-bottom: black solid 1px;
+    gap: 10px;
+    align-items: center; 
     position: sticky;
-    top: 0px;
+    top: 0;
     background-color: white;
+    z-index: 1;
+    transition: box-shadow 0.3s ease;
 }
 
-.navbar__s1__title {
-    color: #7e0d86a1;
-    padding: 10px;
+/* Navigator hover effect */
+.navigator:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.navbar__s2 {
-    margin: 10px;
+.navigator__s1__title {
+    color: #A435F0;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Logo hover effect */
+.navigator__s1__title:hover {
+    transform: scale(1.05);
+    color: #7b2ebc;
+}
+
+.navigator__s2 {
     padding: 10px;
-    border: solid black 1px;
-    border-radius: 50px;
+    border: solid 1px black;
+    border-radius: 30px;
     width: 60%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Search bar hover effect */
+.navigator__s2:hover {
+    border-color: #A435F0;
+    box-shadow: 0 0 10px rgba(164, 53, 240, 0.2);
+}
+
+.navigator__s2 input {
+  border: none;
+  font-size: 16px;
+  width: 100%;
+  background-color:transparent;
+  transition: font-size 0.3s ease;
+}
+
+.navigator__s2 input:focus {
+  outline: none;
+}
+
+/* Search icon hover effect */
+.navigator__s2 i:hover {
+    transform: scale(1.2);
+    color: #A435F0 !important;
+    transition: all 0.3s ease;
+}
+
+.navigator__s3{
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.navbar__s3 p:hover,
-.navbar__s3 i:hover {
-    margin-bottom: 10px;
-}
-.sale__one{
-    padding-top:30px;
-    padding-bottom: 20px;
-    padding-right: 50px; ;
-    padding-left: 30px;
-    width: 30%;
-    margin-left: 100px;
-}
-.sale__one:hover{
-    transition-duration: 1s;
-    padding-right: 70px;
-    padding-left: 70px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-.sale__one:backdrop{
- transition-duration: 1s;
-}
-.sale{
- background-image: url(main.png);
- height: 425px;
-}
-.navbar__s2__text {
-    border: none;
-    width: 100%;
-    font-size: 16px;
-    background-color: transparent;
+/* Navigation items hover effect */
+.navigator__s3 p {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-.navbar__s2__text:focus {
-    outline: none;
+.navigator__s3 p:hover {
+    background-color: #f0f0f0;
+    color: #A435F0;
+    transform: translateY(-2px);
 }
 
-.navbar__s3 {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+/* Navigation icons hover effect */
+.navigator__s3 i {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
-.categories {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: solid black 1px;
+.navigator__s3 i:hover {
+    background-color: #f0f0f0;
+    color: #A435F0 !important;
+    transform: scale(1.2);
 }
 
-.categories p {
-    background-color: #7e0d86a1;
-    padding: 5px;
-    color: white;
-    border-radius: 50px;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: solid #7e0d86a1 1px;
-
+/* Mobile menu hover effect */
+.navigator__s4 i {
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.3s ease;
 }
 
-.categories p:hover {
-    color: black;
+.navigator__s4 i:hover {
+    color: #A435F0 !important;
+    transform: rotate(90deg);
+}
+
+.mylearning{
+    position: relative;
+    cursor: pointer;
+}
+.mylearning_popup h4{
+    color: blue;
+}
+.mylearning_popup{
+    position: absolute;
     background-color: white;
-    transition-duration: 1s;
-    border: solid #7e0d86a1 1px;
+    border: solid 1px black;
+    width: 100px;
+    padding:10px;
+    top: 150%;
+    right: 0;
+    display: none;
+}
+.mylearning:hover .mylearning_popup{
+    display: block;
+}
+
+.Categories{
+    display: flex;
+    padding: 10px;
+    border: solid 1px black;
+    justify-content: space-around;
+}
+
+.Categories p{
+    background-color: #A435F0;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+    cursor: pointer;
+    border: solid #7b2ebc 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Enhanced category hover effect */
+.Categories p:hover{
+    background-color: transparent;
+    color: #A435F0;
+    border: solid #7b2ebc 1px;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(164, 53, 240, 0.3);
+}
+
+/* Category item scaling effect */
+.Categories p:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.sales-image{
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sales image hover effect */
+.sales-image img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.sales-image:hover img {
+    transform: scale(1.02);
+}
+
+.sales-image--offer{
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+    width: 500px;
+    border: solid 1px black ;
+    animation-name: zoom;
+    animation-duration: 2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    padding: 10px;
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .recommended {
-   padding: 10px;
+    padding: 10px;
 }
 
 .recommended__container {
-display: flex;
-justify-content: space-between;
-margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
 }
+
 .course-card {
-    width: 20%;
-    margin: 10px;
+    margin: 5px;
+    flex-grow: 1;
+    flex-basis: 20%;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Course card hover effects */
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(164, 53, 240, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.course-card:hover::before {
+    left: 100%;
 }
 
 .course-card img {
-width: 100%;
+    height: 60%;
+    width: 100%;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
-.box h1{
-    margin: 10px;
-    margin-top:50px ;
-    margin-left: 20px;
+
+.course-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
-.box__b{
+
+/* Course card text hover effects */
+.course-card h3 {
+    transition: color 0.3s ease;
+}
+
+.course-card:hover h3 {
+    color: #A435F0;
+}
+
+.course-card p {
+    transition: all 0.3s ease;
+}
+
+.course-card:hover p {
+    color: #333;
+}
+
+.topics {
+    padding: 10px;
+}
+
+.topics__container{
     display: flex;
+    gap: 10px;
+    margin-top: 10px;
     flex-wrap: wrap;
 }
-.box p{
-    margin: 10px;
-    padding: 10px;
-    border: solid black 1px;
-    flex-grow: 1;
-    flex-basis: 30%;
-}
-.box p:hover{color: white;
-background-color: #7e0d86a1;
-border-radius: 30px;
-transition-duration: 0.5ms;
-    border:none;
 
+.topics__container p{
+    border: solid gray 2px;
+    padding: 10px;
+    flex-grow: 1;
+    flex-basis: 25%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
 }
-.popular__one{
-    margin: 10px;
+span{
+    color:black;
 }
-.recommended__container{
-    margin: 20px;
+
+/* Topics hover effects */
+.topics__container p:hover {
+    background-color: #A435F0;
+    color: white;
+    border-color: #A435F0;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(164, 53, 240, 0.3);
 }
-.footer{
-    background-color: black;
-    color: white;    
-    padding: 20px;
+
+.topics__container p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #A435F0;
+    transition: width 0.3s ease;
 }
-.footer__one{
+
+.topics__container p:hover::after {
+    width: 100%;
+}
+
+.popular {
+    padding: 10px;
+}
+
+.popular__container {
     display: flex;
-    gap:50px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 10px;
 }
-.footer__one__s1 p,.footer__one__s2 p{
-    margin: 10px;
-    margin-left: 50px;
-    margin-top: 20px;
+
+/* Section titles hover effects */
+.recommended__title, .topics__title, .popular__title {
+    transition: all 0.3s ease;
+    cursor: default;
 }
-.footer__two{
+
+.recommended__title:hover, .topics__title:hover, .popular__title:hover {
+    color: #A435F0;
+    transform: translateX(10px);
+}
+
+.footer{
+    padding: 30px;
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.footer:hover {
+    background-color: #1a1a1a;
+}
+
+.footer_one{
+    display: flex;
+    gap: 10px;
+}
+
+.footer_one p{
+    margin: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/* Footer links hover effects */
+.footer_one p:hover {
+    color: #A435F0;
+    background-color: rgba(164, 53, 240, 0.1);
+    transform: translateX(5px);
+}
+
+.footer__two {
+    margin: 20px;
+    align-items: center;
     display: flex;
     justify-content: space-between;
 }
-.footer__two{
-    margin-left: 50px;
-    margin-top: 10px;
-    align-items: center;
+
+.footer__two h1 {
+    color: #A435F0;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-.footer__one__s1 p:hover,.footer__one__s2 p:hover{
-    color: #7e0d86a1;
+
+.footer__two h1:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(164, 53, 240, 0.5);
 }
-.course-card:hover{
-    margin: 0px;
-    padding: 10px;
-    padding-top: 0px;
-    transition-duration: 1s;
-    .p{
-        color: red;
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Button-like elements get a subtle pulse effect */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.course-card:hover {
+    animation: pulse 0.6s ease-in-out;
+}
+
+@media screen and (max-width: 800px) {
+    body{ 
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .course-card{
+        flex-basis: 40%;
+    }
+    .Categories{
+        display: none;
+    }
+    .navigator__s2,.navigator__s3 {
+        display: none;
+    }
+    
+    /* Reduce hover effects on mobile for better performance */
+    .course-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .navigator__s4 {
+        display: none;
     }
 }
